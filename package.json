@@ -1,0 +1,33 @@
+{
+  "name": "@k03mad/util",
+  "version": "0.0.1",
+  "description": "My Utils",
+  "maintainers": [
+    "Kirill Molchanov <k03.mad@gmail.com"
+  ],
+  "main": "app/main",
+  "repository": "k03mad/util",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@k03mad/eslint-config": "10.0.15",
+    "eslint": "8.4.0",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jsdoc": "37.1.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-sort-destructure-keys": "1.4.0",
+    "eslint-plugin-unicorn": "39.0.0",
+    "husky": "7.0.4"
+  },
+  "scripts": {
+    "lint": "eslint ./ --report-unused-disable-directives --ignore-pattern='!.*'",
+    "setup": "npm i",
+    "prepare": "husky install"
+  }
+}
