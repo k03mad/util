@@ -1,7 +1,9 @@
 import delay from './utils/promise/delay.js';
 
 const util = {
-    promise: delay,
+    promise: {
+        delay,
+    },
 };
 
 export default util;
