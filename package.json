@@ -5,7 +5,7 @@
   "maintainers": [
     "Kirill Molchanov <k03.mad@gmail.com"
   ],
-  "main": "app/main",
+  "main": "app/index.js",
   "repository": "k03mad/util",
   "license": "MIT",
   "type": "module",
