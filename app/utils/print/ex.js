@@ -1,0 +1,92 @@
+import chalk from 'chalk';
+
+import now from '../date/now.js';
+
+const {blue, green, red, yellow} = chalk;
+
+let errors = 0;
+
+/**
+ * @param {object} err
+ * @param {object} opts
+ * @param {boolean} opts.beforeline
+ * @param {boolean} opts.afterline
+ * @param {boolean} opts.time
+ * @param {boolean} opts.full
+ * @param {string} opts.after
+ * @param {string} opts.before
+ * @param {boolean} opts.exit
+ * @param {number} opts.exitAfter
+ */
+export default (err, {
+
+    after,
+    afterline = true,
+    before,
+    beforeline = true, exit, exitAfter,
+    full, time = true,
+
+} = {}) => {
+    const msg = [];
+
+    if (beforeline) {
+        msg.push('');
+    }
+
+    if (time) {
+        msg.push(green(now()));
+    }
+
+    if (before) {
+        msg.push(yellow(before));
+    }
+
+    if (full) {
+        msg.push(err);
+    } else {
+        msg.push(err.toString());
+    }
+
+    let httpErr = '';
+
+    if (err.response?.statusCode) {
+        httpErr += `${red(err.response.statusCode)}:`;
+    }
+
+    if (err.options?.method) {
+        httpErr += ` ${green(err.options.method)}`;
+    }
+
+    if (err.options?.url) {
+        httpErr += ` ${blue(err.options.url)}`;
+    }
+
+    if (httpErr) {
+        msg.push(httpErr);
+    }
+
+    if (after) {
+        msg.push(yellow(after));
+    }
+
+    if (afterline) {
+        msg.push('');
+    }
+
+    if (exitAfter) {
+        errors++;
+        msg.push(`> errors count: ${errors}/${exitAfter}`);
+
+        if (errors > exitAfter) {
+            errors = 0;
+            exit = true;
+        }
+    }
+
+    console.error(msg.join('\n'));
+
+    if (exit) {
+        msg.push('> kill process');
+        process.exit(1);
+    }
+};
