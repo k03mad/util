@@ -4,26 +4,18 @@ import now from './utils/date/now.js';
 import ex from './utils/print/ex.js';
 import delay from './utils/promise/delay.js';
 
-const util = {
-    // api
-    mikrotik: {
-        switch: switch_,
-        write,
-    },
+export default {
 
-    // utils
-    date: {
-        now,
-    },
+    /**
+     * API
+     */
+    mikrotik: {switch: switch_, write},
 
-    print: {
-        ex,
-    },
-
-    promise: {
-        delay,
-    },
+    /**
+     * UTILS
+     */
+    date: {now},
+    print: {ex},
+    promise: {delay},
 
 };
-
-export default util;
