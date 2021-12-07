@@ -42,7 +42,7 @@ export default (err, {
     }
 
     if (full) {
-        msg.push(err);
+        msg.push(err?.stack || err);
     } else {
         msg.push(err.toString());
     }
