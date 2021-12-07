@@ -10,4 +10,11 @@ export default {
         user: process.env.MIKROTIK_USER,
         password: process.env.MIKROTIK_PASSWORD,
     },
+    google: {
+        email: process.env.GOOGLE_EMAIL,
+    },
+    next: {
+        password: process.env.NEXT_DNS_PASSWORD,
+        config: process.env.NEXT_DNS_CONFIG,
+    },
 };
