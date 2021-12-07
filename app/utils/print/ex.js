@@ -2,7 +2,7 @@ import chalk from 'chalk';
 
 import now from '../date/now.js';
 
-const {blue, green, red, yellow} = chalk;
+const {blue, gray, green, red, yellow} = chalk;
 
 let errors = 0;
 
@@ -59,6 +59,10 @@ export default (err, {
 
     if (err.options?.url) {
         httpErr += ` ${blue(err.options.url)}`;
+    }
+
+    if (err.response?.body) {
+        httpErr += `\n${gray(err.response.body)}`;
     }
 
     if (httpErr) {
