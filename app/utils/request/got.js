@@ -17,7 +17,7 @@ const request = async (url, opts) => {
     opts = {...opts};
 
     if (!opts.timeout) {
-        opts.timeout = 15_000;
+        opts.timeout = {request: 15_000};
     }
 
     if (!opts.headers) {

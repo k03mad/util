@@ -16,8 +16,8 @@ export default async response => {
     ) {
         response = response.response || response;
 
-        if (response?.requestUrl) {
-            const parsed = new URL(response.requestUrl);
+        if (response?.requestUrl?.toString()) {
+            const parsed = new URL(response.requestUrl.toString());
 
             if (!parsed.href.startsWith(env.influx.url)) {
                 const date = now();
