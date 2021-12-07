@@ -21,11 +21,8 @@ import notifyTinkoff from './api/tinkoff/notify.js';
 import portfolio from './api/tinkoff/portfolio.js';
 import getTmdb from './api/tmdb/get.js';
 import ua from './const/ua.js';
-import chunk from './utils/array/chunk.js';
 import convert from './utils/array/convert.js';
 import countArray from './utils/array/count.js';
-import diffArray from './utils/array/diff.js';
-import merge from './utils/array/merge.js';
 import diff from './utils/date/diff.js';
 import now from './utils/date/now.js';
 import erase from './utils/folder/erase.js';
@@ -75,7 +72,7 @@ export default {
     /**
      * UTILS
      */
-    array: {diff: diffArray, convert, merge, count: countArray, chunk},
+    array: {convert, count: countArray},
     date: {diff, now},
     folder: {size, erase},
     hosts: {comment, sort},
