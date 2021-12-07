@@ -19,6 +19,7 @@ import getSyncthing from './api/syncthing/get.js';
 import sendMessage from './api/telegram/sendMessage.js';
 import notifyTinkoff from './api/tinkoff/notify.js';
 import portfolio from './api/tinkoff/portfolio.js';
+import getTmdb from './api/tmdb/get.js';
 import ua from './const/ua.js';
 import chunk from './utils/array/chunk.js';
 import convert from './utils/array/convert.js';
@@ -64,6 +65,7 @@ export default {
     syncthing: {get: getSyncthing},
     telegram: {sendMessage},
     tinkoff: {portfolio, notify: notifyTinkoff},
+    tmdb: {get: getTmdb},
 
     /**
      * CONST
