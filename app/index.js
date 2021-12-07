@@ -4,6 +4,7 @@ import queryInflux from './api/influx/query.js';
 import writeInflux from './api/influx/write.js';
 import info from './api/ip/info.js';
 import lookup from './api/ip/lookup.js';
+import getLastfm from './api/lastfm/get.js';
 import switch_ from './api/mikrotik/switch.js';
 import write from './api/mikrotik/write.js';
 import authMyshows from './api/myshows/auth.js';
@@ -55,6 +56,7 @@ export default {
     cloud: {notify},
     influx: {append, write: writeInflux, query: queryInflux},
     ip: {info, lookup},
+    lastfm: {get: getLastfm},
     mikrotik: {switch: switch_, write},
     myshows: {auth: authMyshows, get, watch},
     next: {auth, query, list},
