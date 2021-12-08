@@ -7,14 +7,14 @@ const {mikrotik} = env;
 /**
  * @param {string} path
  * @param {object} json
- * @param {object} opts
+ * @param {object} gotOpts
  * @returns {object}
  */
-export default async (path, json, opts) => {
+export default async (path, json, gotOpts) => {
     const {body} = await got(`https://${mikrotik.host}/rest/${path}`, {
         ...defOpts,
         method: 'POST', json,
-        ...opts,
+        ...gotOpts,
     });
 
     return body;
