@@ -1,6 +1,5 @@
 import env from '../../../env.js';
 import got from '../../utils/request/got.js';
-import {defOpts, sanitize} from './_opts.js';
 
 const {mikrotik} = env;
 
@@ -11,9 +10,15 @@ const {mikrotik} = env;
  * @returns {object}
  */
 export default async (path, json, gotOpts) => {
-    const {body} = await got(`https://${mikrotik.host}/rest/${sanitize(path)}`, {
-        ...defOpts,
+    path = path.replace(/^\/|\/$/g, '');
+
+    const {body} = await got(`https://${mikrotik.host}/rest/${path}`, {
         method: 'POST', json,
+        username: mikrotik.user,
+        password: mikrotik.password,
+        https: {
+            rejectUnauthorized: false,
+        },
         ...gotOpts,
     });
 
