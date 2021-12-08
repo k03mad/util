@@ -9,6 +9,8 @@ const {mikrotik} = env;
  * @returns {object}
  */
 export default async path => {
+    path = path.replace(/^\/|\/$/g, '');
+
     const {body} = await got(`https://${mikrotik.host}/rest/${path}`, {...opts});
     return body;
 };
