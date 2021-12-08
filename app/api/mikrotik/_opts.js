@@ -2,7 +2,13 @@ import env from '../../../env.js';
 
 const {mikrotik} = env;
 
-export default {
+/**
+ * @param {string} path
+ * @returns {string}
+ */
+export const sanitize = path => path.replace(/^\/|\/$/g, '');
+
+export const defOpts = {
     username: mikrotik.user,
     password: mikrotik.password,
     https: {

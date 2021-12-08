@@ -1,6 +1,6 @@
 import env from '../../../env.js';
 import got from '../../utils/request/got.js';
-import defOpts from './_opts.js';
+import {defOpts, sanitize} from './_opts.js';
 
 const {mikrotik} = env;
 
@@ -11,7 +11,7 @@ const {mikrotik} = env;
  * @returns {object}
  */
 export default async (path, json, gotOpts) => {
-    const {body} = await got(`https://${mikrotik.host}/rest/${path}`, {
+    const {body} = await got(`https://${mikrotik.host}/rest/${sanitize(path)}`, {
         ...defOpts,
         method: 'POST', json,
         ...gotOpts,
