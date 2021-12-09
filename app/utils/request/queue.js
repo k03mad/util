@@ -27,7 +27,7 @@ const requestQueue = {
     },
 
     [mikrotik.host]: {
-        POST: concurrency(1),
+        POST: concurrency(2),
     },
 
     [influx.ipPort]: {
