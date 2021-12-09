@@ -5,6 +5,7 @@ import PQueue from 'p-queue';
 
 import env from '../../../env.js';
 
+const {influx, mikrotik} = env;
 const log = debug('utils-mad:request:queue');
 
 const rps = num => ({intervalCap: num, interval: 1000});
@@ -25,7 +26,11 @@ const requestQueue = {
         'DELETE': rps(1),
     },
 
-    [env.influx.ipPort]: {
+    [mikrotik.host]: {
+        POST: concurrency(1),
+    },
+
+    [influx.ipPort]: {
         '*': concurrency(50),
     },
 };
