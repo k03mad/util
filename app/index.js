@@ -19,7 +19,6 @@ import sendMessage from './api/telegram/sendMessage.js';
 import notifyTinkoff from './api/tinkoff/notify.js';
 import portfolio from './api/tinkoff/portfolio.js';
 import getTmdb from './api/tmdb/get.js';
-import ua from './const/ua.js';
 import convert from './utils/array/convert.js';
 import countArray from './utils/array/count.js';
 import diff from './utils/date/diff.js';
@@ -45,43 +44,39 @@ import escape from './utils/string/escape.js';
 import filenamify from './utils/string/filenamify.js';
 import split from './utils/string/split.js';
 
-export default {
+/**
+ * API
+ */
+export const cloud = {notify};
+export const influx = {append, write: writeInflux, query: queryInflux};
+export const ip = {info, lookup};
+export const lastfm = {get: getLastfm};
+export const mikrotik = {post};
+export const myshows = {auth: authMyshows, get, watch};
+export const next = {auth, query, list};
+export const pinger = {check, notify: notifyPinger};
+export const syncthing = {get: getSyncthing};
+export const telegram = {sendMessage};
+export const tinkoff = {portfolio, notify: notifyTinkoff};
+export const tmdb = {get: getTmdb};
 
-    /**
-     * API
-     */
-    cloud: {notify},
-    influx: {append, write: writeInflux, query: queryInflux},
-    ip: {info, lookup},
-    lastfm: {get: getLastfm},
-    mikrotik: {post},
-    myshows: {auth: authMyshows, get, watch},
-    next: {auth, query, list},
-    pinger: {check, notify: notifyPinger},
-    syncthing: {get: getSyncthing},
-    telegram: {sendMessage},
-    tinkoff: {portfolio, notify: notifyTinkoff},
-    tmdb: {get: getTmdb},
+/**
+ * UTILS
+ */
+export const array = {convert, count: countArray};
+export const date = {diff, now};
+export const folder = {size, erase};
+export const hosts = {comment, sort};
+export const object = {count};
+export const print = {ex};
+export const promise = {delay};
+export const re = {isLocalIp};
+export const request = {doh, got, curl, cache, queue, save};
+export const repo = {run: repoRun, update};
+export const shell = {run};
+export const string = {split, escape, filenamify};
 
-    /**
-     * CONST
-     */
-    ua,
-
-    /**
-     * UTILS
-     */
-    array: {convert, count: countArray},
-    date: {diff, now},
-    folder: {size, erase},
-    hosts: {comment, sort},
-    object: {count},
-    print: {ex},
-    promise: {delay},
-    re: {isLocalIp},
-    request: {doh, got, curl, cache, queue, save},
-    repo: {run: repoRun, update},
-    shell: {run},
-    string: {split, escape, filenamify},
-
-};
+/**
+ * CONST
+ */
+export {default as ua} from './const/ua.js';
