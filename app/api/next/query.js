@@ -23,6 +23,7 @@ export default async ({
     ...rest
 } = {}) => {
     const cookie = await auth({email, password});
+
     const {body} = await got(`https://api.nextdns.io/configurations/${config}/${path}`, {
         headers: {
             'user-agent': win.chrome,

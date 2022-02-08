@@ -38,6 +38,7 @@ export default async ({
         ]);
 
         const watchedIds = new Set(watchedEpisodes.map(elem => elem.id));
+
         const filterEpisodes = allEpisodes.episodes.filter(
             elem => !watchedIds.has(elem.id)
                 && elem.airDate

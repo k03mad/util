@@ -17,6 +17,7 @@ export default async (repo, scripts) => {
             `cd ~/git/${repo}`,
             `npm run ${script}`,
         ]);
+
         logs.push(log);
     }
 

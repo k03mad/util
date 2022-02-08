@@ -80,6 +80,7 @@ export default (url, gotOpts = {}, {expire = '7d'} = {}) => {
         const res = await got(url, gotOpts, {skipQueue: true});
 
         const cachedResponse = {};
+
         cacheGotResponseKeys.forEach(key => {
             cachedResponse[key] = res[key];
         });

@@ -49,6 +49,7 @@ export default async (checks, {
 
         if (previousCheck?.online !== ping.online) {
             const status = ping.online ? 'UP' : 'DOWN';
+
             const text = [
                 `\`${status}\` `,
                 ping.host,
