@@ -45,7 +45,7 @@ export default (url, gotOpts = {}, {expire = '7d'} = {}) => {
         await fs.mkdir(path.dirname(cacheFile), {recursive: true});
 
         try {
-            const cache = await fs.readFile(cacheFile, {encoding: 'utf-8'});
+            const cache = await fs.readFile(cacheFile, {encoding: 'utf8'});
             const text = await decompress(cache);
             const {cachedResponse, date} = JSON.parse(text);
 
