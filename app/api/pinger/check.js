@@ -23,6 +23,7 @@ const getFileFullPath = (folder, ping) => {
  * @param {object} [opts]
  * @param {string} [opts.folder]
  * @param {string} [opts.token]
+ * @returns {Promise}
  */
 export default async (checks, {
     folder = './.pinger',

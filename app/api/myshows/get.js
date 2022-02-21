@@ -7,7 +7,7 @@ import auth from './auth.js';
  * @param {object} opts.cred
  * @param {object} opts.params
  * @param {object} opts.gotOpts
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default async ({
 

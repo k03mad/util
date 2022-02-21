@@ -5,7 +5,7 @@ const {lastfm} = env;
 
 /**
  * @param {object} params
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default async (params = {}) => {
     const {body} = await got('https://ws.audioscrobbler.com/2.0/', {

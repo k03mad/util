@@ -6,7 +6,7 @@ const {telegram} = env;
 /**
  * @param {object} opts
  * @param {string} token
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default (opts, token) => got(
     `https://api.telegram.org/bot${token}/sendMessage`, {

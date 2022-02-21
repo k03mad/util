@@ -7,7 +7,7 @@ const {mikrotik} = env;
  * @param {string} path
  * @param {object} json
  * @param {object} gotOpts
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default async (path, json, gotOpts) => {
     path = path.replace(/^\/|\/$/g, '');

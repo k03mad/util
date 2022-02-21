@@ -9,7 +9,7 @@ const {google, next} = env;
  * @param {object} opts
  * @param {string} opts.email
  * @param {string} opts.password
- * @returns {Array}
+ * @returns {Promise<string>}
  */
 export default async ({email = google.email, password = next.password} = {}) => {
     const {body, headers} = await gotCache('https://api.nextdns.io/accounts/@login', {

@@ -9,7 +9,7 @@ const {google, next} = env;
  * @param {string} [opts.email]
  * @param {string} [opts.password]
  * @param {string} [opts.config]
- * @returns {Array}
+ * @returns {Promise<Array>}
  */
 export default async ({
     path,

@@ -6,6 +6,6 @@ const {tinkoff} = env;
 /**
  * @param {object} opts
  * @param {string} token
- * @returns {object}
+ * @returns {Promise}
  */
 export default (opts, token = tinkoff.tg) => sendMessage(opts, token);

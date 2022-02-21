@@ -13,7 +13,7 @@ const {google, next} = env;
  * @param {string} [opts.password]
  * @param {string} [opts.config]
  * @param {object} [opts.rest]
- * @returns {Array}
+ * @returns {Promise<object>}
  */
 export default async ({
     path,

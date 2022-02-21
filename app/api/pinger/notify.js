@@ -6,6 +6,6 @@ const {pinger} = env;
 /**
  * @param {object} opts
  * @param {string} token
- * @returns {object}
+ * @returns {Promise}
  */
 export default (opts, token = pinger.tg) => sendMessage(opts, token);

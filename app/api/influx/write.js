@@ -10,6 +10,7 @@ const {influx} = env;
 
 /**
  * @param {object} data
+ * @returns {Promise}
  */
 export default async data => {
     const tries = {

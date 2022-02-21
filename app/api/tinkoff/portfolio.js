@@ -5,7 +5,7 @@ const {tinkoff} = env;
 
 /**
  * @param {string} token
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default async (token = tinkoff.token) => {
     const api = 'https://api-invest.tinkoff.ru/openapi';

@@ -4,7 +4,7 @@ import gotCache from '../../utils/request/cache.js';
 
 /**
  * @param {string} ip
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default async ip => {
     const {body} = await gotCache(

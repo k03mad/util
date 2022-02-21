@@ -4,6 +4,7 @@ import write from './write.js';
 
 /**
  * @param {object} append
+ * @returns {Promise}
  */
 export default async append => {
     const prepared = [];

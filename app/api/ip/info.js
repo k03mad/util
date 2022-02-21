@@ -5,7 +5,7 @@ const {ipinfo} = env;
 
 /**
  * @param {string} ip
- * @returns {object}
+ * @returns {Promise<object>}
  */
 export default async ip => {
     const url = `https://ipinfo.io/${ip}`;
