@@ -35,21 +35,23 @@ const requestQueue = {
  * Поставить логирование и вернуть очередь
  * @param {string} host
  * @param {string} method
+ * @param {object} opts
  * @returns {object}
  */
-const getLoggedQueue = (host, method) => {
+const getLoggedQueue = (host, method, opts) => {
     const queue = requestQueue[host][method];
 
     queue.on('active', () => {
-        const {_concurrency, _interval, _intervalCap, pending, size} = queue;
+        const {pending, size} = queue;
+        const {concurrency: concurrent, interval, intervalCap} = opts;
 
-        const opts = _interval > 0
-            ? `${_intervalCap} rp ${_interval} ms`
-            : `${_concurrency} concurrent`;
+        const parallel = interval > 0
+            ? `${intervalCap} rp ${interval} ms`
+            : `${concurrent} concurrent`;
 
         log(
             `[${method === '*' ? '' : `${method}: `}${host}]`
-            + ` ${opts} | queue: ${size} | running: ${pending}`,
+            + ` ${parallel} | queue: ${size} | running: ${pending}`,
         );
     });
 
@@ -72,24 +74,28 @@ export default (host, method = 'GET') => {
 
         // очередь нужно проинициализировать
         if (requestQueue[host]?.[elem]) {
-            requestQueue[host][elem] = new PQueue(requestQueue[host][elem]);
-            return getLoggedQueue(host, elem);
+            const opts = requestQueue[host][elem];
+            requestQueue[host][elem] = new PQueue(opts);
+            return getLoggedQueue(host, elem, opts);
         }
     }
 
     // инициализация очереди для хоста без текущего метода в предустановках
     if (requestQueue[host]) {
-        requestQueue[host]['*'] = new PQueue(requestQueue['*']['*']);
-        return getLoggedQueue(host, '*');
+        const opts = requestQueue['*']['*'];
+        requestQueue[host]['*'] = new PQueue(opts);
+        return getLoggedQueue(host, '*', opts);
     }
 
     // инициализация очереди для хоста с методом из предустановок для всех очередей
     if (requestQueue['*'][method]) {
-        requestQueue[host] = {[method]: new PQueue(requestQueue['*'][method])};
-        return getLoggedQueue(host, method);
+        const opts = requestQueue['*'][method];
+        requestQueue[host] = {[method]: new PQueue(opts)};
+        return getLoggedQueue(host, method, opts);
     }
 
     // нет ни хоста не метода в предустановках
-    requestQueue[host] = {'*': new PQueue(requestQueue['*']['*'])};
-    return getLoggedQueue(host, '*');
+    const opts = requestQueue['*']['*'];
+    requestQueue[host] = {'*': new PQueue(opts)};
+    return getLoggedQueue(host, '*', opts);
 };
