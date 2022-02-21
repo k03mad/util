@@ -39,6 +39,7 @@ import doh from './utils/request/doh.js';
 import got from './utils/request/got.js';
 import queue from './utils/request/queue.js';
 import save from './utils/request/save.js';
+import bar from './utils/shell/bar.js';
 import run from './utils/shell/run.js';
 import escape from './utils/string/escape.js';
 import filenamify from './utils/string/filenamify.js';
@@ -73,7 +74,7 @@ export const promise = {delay};
 export const re = {isLocalIp};
 export const request = {doh, got, curl, cache, queue, save};
 export const repo = {run: repoRun, update};
-export const shell = {run};
+export const shell = {run, bar};
 export const string = {split, escape, filenamify};
 
 /**

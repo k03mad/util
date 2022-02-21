@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "chalk": "5.0.0",
+    "cli-progress": "3.10.0",
     "debug": "4.3.3",
     "filenamify": "5.1.0",
     "got": "12.0.1",
