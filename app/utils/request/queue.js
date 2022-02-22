@@ -45,9 +45,9 @@ const getLoggedQueue = (host, method, opts) => {
         const {pending, size} = queue;
         const {concurrency: concurrent, interval, intervalCap} = opts;
 
-        const parallel = interval > 0
-            ? `${intervalCap} rp ${interval} ms`
-            : `${concurrent} concurrent`;
+        const parallel = concurrent
+            ? `${concurrent} concurrent`
+            : `${intervalCap} rp ${interval} ms`;
 
         log(
             `[${method === '*' ? '' : `${method}: `}${host}]`
