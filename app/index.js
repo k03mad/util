@@ -22,6 +22,7 @@ import portfolio from './api/tinkoff/portfolio.js';
 import getTmdb from './api/tmdb/get.js';
 import convert from './utils/array/convert.js';
 import countArray from './utils/array/count.js';
+import insert from './utils/array/insert.js';
 import diff from './utils/date/diff.js';
 import now from './utils/date/now.js';
 import erase from './utils/folder/erase.js';
@@ -66,7 +67,7 @@ export const tmdb = {get: getTmdb};
 /**
  * UTILS
  */
-export const array = {convert, count: countArray};
+export const array = {convert, count: countArray, insert};
 export const date = {diff, now};
 export const folder = {size, erase};
 export const hosts = {comment, sort};
