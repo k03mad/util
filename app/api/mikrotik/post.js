@@ -1,8 +1,8 @@
+import _ from 'lodash';
+
 import env from '../../../env.js';
 import delay from '../../utils/promise/delay.js';
 import got from '../../utils/request/got.js';
-
-const RETRY_TIMEOUT = 5000;
 
 const {mikrotik} = env;
 
@@ -35,7 +35,7 @@ export default async (path, json, gotOpts) => {
         return await request(...args);
     } catch (err) {
         if (err.response?.statusCode === 200) {
-            await delay(RETRY_TIMEOUT);
+            await delay(_.random(1000, 5000));
             return request(...args);
         }
 

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import now from 'nano-time';
 
 import env from '../../../env.js';
@@ -13,10 +14,7 @@ const {influx} = env;
  * @returns {Promise}
  */
 export default async data => {
-    const tries = {
-        count: 3,
-        delay: 10_000,
-    };
+    const tries = 3;
 
     const errors = [];
 
@@ -34,15 +32,15 @@ export default async data => {
                 const path = `${url}/write`;
                 const body = `${meas} ${writeData} ${timestamp}`;
 
-                for (let i = 1; i <= tries.count; i++) {
+                for (let i = 1; i <= tries; i++) {
                     try {
                         await got(path, {method: 'POST', searchParams: {db}, body});
                         break;
                     } catch (err) {
-                        if (i === tries.count) {
+                        if (i === tries) {
                             throw new Error([`InfluxDB "${db}" write error:`, path, body, err].join('\n').trim());
                         } else {
-                            await delay(tries.delay);
+                            await delay(_.random(5000, 10_000));
                         }
                     }
                 }
