@@ -34,7 +34,7 @@ export default async (path, json, gotOpts) => {
     try {
         return await request(...args);
     } catch (err) {
-        if (err.response.statusCode === 200) {
+        if (err.response?.statusCode === 200) {
             await delay(RETRY_TIMEOUT);
             return request(...args);
         }
