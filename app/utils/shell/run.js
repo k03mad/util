@@ -11,7 +11,7 @@ const log = debug('utils-mad:shell:run');
  * @param {string|Array<string>} cmd
  * @param {object} opts
  * @param {boolean} opts.returnOnErr
- * @returns {string}
+ * @returns {Promise<string>}
  */
 export default async (cmd, {returnOnErr} = {}) => {
     const maxBuffer = 1024 * 5000;
