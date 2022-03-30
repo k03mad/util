@@ -30,7 +30,6 @@ export default async (checks, {
     token,
 } = {}) => {
     await fs.mkdir(folder, {recursive: true});
-    await fs.writeFile(path.join(folder, '.gitignore'), '*');
 
     for (const {domain, port = 80} of convert(checks)) {
         let ping = await tcpPingPort(domain, Number(port));
