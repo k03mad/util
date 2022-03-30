@@ -25,11 +25,6 @@ export default {
         login: process.env.MYSHOWS_LOGIN,
         password: process.env.MYSHOWS_PASSWORD,
     },
-    syncthing: {
-        ip: process.env.SYNCTHING_CLOUD_IP,
-        port: process.env.SYNCTHING_CLOUD_PORT,
-        key: process.env.SYNCTHING_API_KEY,
-    },
     tinkoff: {
         token: process.env.TOAT,
         tg: process.env.TELEGRAM_TINKOFF_BOT,
