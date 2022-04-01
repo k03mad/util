@@ -1,11 +1,11 @@
 /**
  * @param {Array} arr
  * @param {number} index
- * @param {*} newItem
+ * @param {*} item
  * @returns {Array}
  */
-export default (arr, index, newItem) => [
+export default (arr, index, item) => [
     ...arr.slice(0, index),
-    newItem,
+    item,
     ...arr.slice(index),
 ];

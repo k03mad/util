@@ -30,14 +30,14 @@
     "xml-js": "1.6.11"
   },
   "devDependencies": {
-    "@k03mad/eslint-config": "10.1.1",
+    "@k03mad/eslint-config": "11.0.1",
     "eslint": "8.12.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jsdoc": "38.1.4",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "eslint-plugin-sort-destructure-keys": "1.4.0",
-    "eslint-plugin-unicorn": "41.0.1",
+    "eslint-plugin-unicorn": "42.0.0",
     "husky": "7.0.4"
   },
   "scripts": {
