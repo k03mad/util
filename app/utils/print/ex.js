@@ -90,7 +90,6 @@ export default (err, {
     console.error(msg.join('\n'));
 
     if (exit) {
-        msg.push('> kill process');
         process.exit(1);
     }
 };
