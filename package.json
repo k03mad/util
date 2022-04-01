@@ -30,7 +30,7 @@
     "xml-js": "1.6.11"
   },
   "devDependencies": {
-    "@k03mad/eslint-config": "11.0.1",
+    "@k03mad/eslint-config": "11.0.3",
     "eslint": "8.12.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jsdoc": "38.1.4",
@@ -41,7 +41,7 @@
     "husky": "7.0.4"
   },
   "scripts": {
-    "lint": "eslint ./ --report-unused-disable-directives --ignore-pattern='!.*'",
+    "lint": "eslint ./ --report-unused-disable-directives",
     "setup": "npm i",
     "prepare": "husky install"
   }
