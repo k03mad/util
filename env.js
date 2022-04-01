@@ -1,4 +1,7 @@
 export default {
+    adg: {
+        token: process.env.ADG_DNS_TOKEN,
+    },
     cloud: {
         tg: process.env.TELEGRAM_CLOUD_TOKEN,
     },

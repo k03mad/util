@@ -1,3 +1,4 @@
+import getAdg from './api/adg/get.js';
 import notify from './api/cloud/notify.js';
 import append from './api/influx/append.js';
 import queryInflux from './api/influx/query.js';
@@ -50,6 +51,7 @@ import split from './utils/string/split.js';
 /**
  * API
  */
+export const adg = {get: getAdg};
 export const cloud = {notify};
 export const influx = {append, write: writeInflux, query: queryInflux};
 export const ip = {info, lookup};
