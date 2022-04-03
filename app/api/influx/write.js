@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import _ from 'lodash';
 import now from 'nano-time';
 import util from 'node:util';
@@ -8,6 +9,7 @@ import delay from '../../utils/promise/delay.js';
 import got from '../../utils/request/got.js';
 import escape from '../../utils/string/escape.js';
 
+const {magenta} = chalk;
 const {cloud, influx} = env;
 
 /**
@@ -34,13 +36,13 @@ export default async data => {
                 const body = `${meas} ${writeData} ${timestamp}`;
 
                 for (let i = 1; i <= tries; i++) {
-                    if (!cloud.is) {
-                        console.log(util.formatWithOptions({colors: true}, '\n%o\n%O\n', [meas], values));
-                        continue;
-                    }
-
                     try {
-                        await got(path, {method: 'POST', searchParams: {db}, body});
+                        if (cloud.is) {
+                            await got(path, {method: 'POST', searchParams: {db}, body});
+                        } else {
+                            console.log(util.formatWithOptions({colors: true}, `${magenta(meas)}\n%O\n`, values));
+                        }
+
                         break;
                     } catch (err) {
                         if (i === tries) {
