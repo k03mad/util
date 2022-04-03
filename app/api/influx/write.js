@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import now from 'nano-time';
+import util from 'node:util';
 
 import env from '../../../env.js';
 import convert from '../../utils/array/convert.js';
@@ -7,7 +8,7 @@ import delay from '../../utils/promise/delay.js';
 import got from '../../utils/request/got.js';
 import escape from '../../utils/string/escape.js';
 
-const {influx} = env;
+const {cloud, influx} = env;
 
 /**
  * @param {object} data
@@ -33,6 +34,11 @@ export default async data => {
                 const body = `${meas} ${writeData} ${timestamp}`;
 
                 for (let i = 1; i <= tries; i++) {
+                    if (!cloud.is) {
+                        console.log(util.formatWithOptions({colors: true}, '%o\n%O', meas, writeData));
+                        continue;
+                    }
+
                     try {
                         await got(path, {method: 'POST', searchParams: {db}, body});
                         break;

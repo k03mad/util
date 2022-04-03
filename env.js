@@ -4,6 +4,7 @@ export default {
     },
     cloud: {
         tg: process.env.TELEGRAM_CLOUD_TOKEN,
+        is: process.env.IS_CLOUD,
     },
     influx: {
         url: process.env.INFLUX_URL,
