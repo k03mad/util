@@ -10,7 +10,7 @@ import env from '../../../env.js';
  */
 export default async response => {
     if (
-        env.influx.request
+        env.cloud.is
         && env.influx.db
         && env.influx.url
     ) {
