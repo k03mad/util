@@ -35,7 +35,7 @@ export default async data => {
 
                 for (let i = 1; i <= tries; i++) {
                     if (!cloud.is) {
-                        console.log(util.formatWithOptions({colors: true}, '%o\n%O', meas, writeData));
+                        console.log(util.formatWithOptions({colors: true}, '\n%o\n%O\n', [meas], values));
                         continue;
                     }
 
