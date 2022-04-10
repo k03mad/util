@@ -17,7 +17,7 @@ export default async (cmd, {returnOnErr} = {}) => {
     const maxBuffer = 1024 * 5000;
 
     const run = convert(cmd).join(' && ');
-    log('%o', run);
+    log.extend('in')('%o', run);
 
     let stderr, stdout;
 
@@ -37,8 +37,11 @@ export default async (cmd, {returnOnErr} = {}) => {
         }
     }
 
-    return [stdout, stderr]
+    const output = [stdout, stderr]
         .filter(Boolean)
         .map(elem => elem.trim())
         .join('\n\n');
+
+    log.extend('out')('%o', run);
+    return output;
 };
