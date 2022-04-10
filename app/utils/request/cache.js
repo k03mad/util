@@ -11,7 +11,7 @@ import diff from '../date/diff.js';
 import got from './got.js';
 import getQueue from './queue.js';
 
-const log = debug('utils-mad:request:cache');
+const log = debug('util:request:cache');
 const {blue, cyan, dim, green, red, yellow} = chalk;
 
 /**

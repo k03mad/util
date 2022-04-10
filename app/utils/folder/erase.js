@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 import convert from '../array/convert.js';
 
-const log = debug('utils-mad:folder:erase');
+const log = debug('util:folder:erase');
 
 /**
  * @param {string|Array<string>} paths

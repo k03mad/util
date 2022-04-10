@@ -5,7 +5,7 @@ import util from 'node:util';
 import convert from '../array/convert.js';
 
 const exec = util.promisify(cp.exec);
-const log = debug('utils-mad:shell:run');
+const log = debug('util:shell:run');
 
 /**
  * @param {string|Array<string>} cmd

@@ -6,7 +6,7 @@ import PQueue from 'p-queue';
 import env from '../../../env.js';
 
 const {influx} = env;
-const log = debug('utils-mad:request:queue');
+const log = debug('util:request:queue');
 
 const rps = num => ({intervalCap: num, interval: 1000});
 const concurrency = num => ({concurrency: num});

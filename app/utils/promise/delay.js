@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const log = debug('utils-mad:promise:delay');
+const log = debug('util:promise:delay');
 
 /**
  * @param {number} time

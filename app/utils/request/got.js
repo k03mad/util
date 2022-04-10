@@ -6,7 +6,7 @@ import curl from './curl.js';
 import getQueue from './queue.js';
 import save from './save.js';
 
-const log = debug('utils-mad:request:got');
+const log = debug('util:request:got');
 
 /**
  * @param {string} url

@@ -1,3 +1,5 @@
+import qs from 'qs';
+
 import env from '../../../env.js';
 import gotCache from '../../utils/request/cache.js';
 import got from '../../utils/request/got.js';
@@ -13,6 +15,7 @@ const {tmdb} = env;
  * @param {object} opts.gotOpts
  * @param {boolean} opts.cache
  * @param {string} opts.expire
+ * @param {string} opts.proxy
  * @returns {Promise<object>}
  */
 export default async ({
@@ -23,22 +26,24 @@ export default async ({
     gotOpts = {},
     cache,
     expire,
+    proxy = '',
 
 }) => {
-    const request = [
-        `https://api.themoviedb.org/3/${path}`, {
-            searchParams: {
-                api_key: key,
-                language,
-                ...params,
-            },
-            ...gotOpts,
-        },
-    ];
+    const query = qs.stringify({
+        api_key: key,
+        language,
+        ...params,
+    });
+
+    let url = `https://api.themoviedb.org/3/${path}?${query}`;
+
+    if (proxy) {
+        url = proxy + encodeURIComponent(url);
+    }
 
     const {body} = cache
-        ? await gotCache(...request, {expire})
-        : await got(...request);
+        ? await gotCache(url, gotOpts, {expire})
+        : await got(url, gotOpts);
 
     return body.results || body;
 };
