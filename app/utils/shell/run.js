@@ -42,6 +42,6 @@ export default async (cmd, {returnOnErr} = {}) => {
         .map(elem => elem.trim())
         .join('\n\n');
 
-    log.extend('out')('%o', run);
+    log.extend('out')('%o', output);
     return output;
 };
