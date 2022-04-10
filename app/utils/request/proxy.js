@@ -12,7 +12,7 @@ const log = debug('util:request:proxy');
  * @param {string} opts.path
  * @param {string} opts.ua
  * @param {boolean} opts.serial
- * @returns {Array}
+ * @returns {Promise<string>}
  */
 export default async ({
 
