@@ -24,6 +24,9 @@ export default async ({
 
 } = {}) => {
 
+    const {body} = await got('https://raw.githubusercontent.com/k03mad/util/master/proxy.list');
+    const phpProxyList = body.split('\n').filter(elem => elem.startsWith('http'));
+
     const req = async proxy => {
         const proxyFull = proxy + path;
         const proxyTest = proxyFull + testUrl;
@@ -31,16 +34,6 @@ export default async ({
         await got(proxyTest, {headers: {'user-agent': ua}, timeout});
         return proxyFull;
     };
-
-    // http://free-proxy.cz/en/web-proxylist/main/uptime/1
-    const phpProxyList = [
-        'https://www.gauvreau.fr/',
-        'https://www.mostafahamed.com/logs2/',
-        'https://rhythmusic.net/De1337/nothing/',
-
-        'http://fgks.org/proxy/',
-        'http://www.hell-man.de/proxy/',
-    ];
 
     let result;
 
