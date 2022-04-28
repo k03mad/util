@@ -14,21 +14,22 @@ export default async response => {
         && env.influx.db
         && env.influx.url
     ) {
-        response = response.response || response;
+        const responseObj = response.response || response;
+        const urlString = response?.requestUrl?.toString();
 
-        if (response?.requestUrl?.toString()) {
-            const parsed = new URL(response.requestUrl.toString());
+        if (urlString) {
+            const parsed = new URL(urlString);
 
             if (!parsed.href.startsWith(env.influx.url)) {
                 const date = now();
 
                 const data = {
-                    statusCode: response?.statusCode,
-                    method: response?.req?.method,
+                    statusCode: responseObj?.statusCode,
+                    method: responseObj?.req?.method,
                     domain: parsed.hostname,
-                    timing: response?.timings?.phases?.total,
+                    timing: responseObj?.timings?.phases?.total,
                     // eslint-disable-next-line no-underscore-dangle
-                    port: response?.socket?._peername?.port,
+                    port: responseObj?.socket?._peername?.port,
                     date,
                 };
 
