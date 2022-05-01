@@ -32,13 +32,6 @@ export default {
         token: process.env.TOAT,
         tg: process.env.TELEGRAM_TINKOFF_BOT,
     },
-    google: {
-        email: process.env.GOOGLE_EMAIL,
-    },
-    next: {
-        password: process.env.NEXT_DNS_PASSWORD,
-        config: process.env.NEXT_DNS_CONFIG,
-    },
     pinger: {
         tg: process.env.TELEGRAM_PINGER_BOT,
     },
