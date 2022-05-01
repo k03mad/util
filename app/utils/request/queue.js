@@ -8,22 +8,12 @@ import env from '../../../env.js';
 const {influx} = env;
 const log = debug('util:request:queue');
 
-const rps = num => ({intervalCap: num, interval: 1000});
+// const rps = num => ({intervalCap: num, interval: 1000});
 const concurrency = num => ({concurrency: num});
 
 const requestQueue = {
     '*': {
         '*': concurrency(3),
-    },
-
-    'api.themoviedb.org': {
-        '*': concurrency(5),
-    },
-
-    'api.nextdns.io': {
-        '*': concurrency(10),
-        'PATCH': rps(1),
-        'DELETE': rps(1),
     },
 
     [influx.ipPort]: {
