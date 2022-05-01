@@ -5,23 +5,15 @@ import PQueue from 'p-queue';
 
 import env from '../../../env.js';
 
-const {influx} = env;
 const log = debug('util:request:queue');
-
-// const rps = num => ({intervalCap: num, interval: 1000});
-const concurrency = num => ({concurrency: num});
 
 const requestQueue = {
     '*': {
-        '*': concurrency(3),
+        '*': {concurrency: 3},
     },
 
-    'api.themoviedb.org': {
-        '*': concurrency(5),
-    },
-
-    [influx.ipPort]: {
-        '*': concurrency(50),
+    [env.influx.ipPort]: {
+        '*': {concurrency: 50},
     },
 };
 
