@@ -16,6 +16,10 @@ const requestQueue = {
         '*': concurrency(3),
     },
 
+    'api.themoviedb.org': {
+        '*': concurrency(5),
+    },
+
     [influx.ipPort]: {
         '*': concurrency(50),
     },
