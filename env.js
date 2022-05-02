@@ -38,7 +38,4 @@ export default {
     telegram: {
         me: process.env.TELEGRAM_MY_CHAT,
     },
-    tmdb: {
-        key: process.env.TMDB_KEY,
-    },
 };

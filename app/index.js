@@ -15,7 +15,6 @@ import notifyPinger from './api/pinger/notify.js';
 import sendMessage from './api/telegram/sendMessage.js';
 import notifyTinkoff from './api/tinkoff/notify.js';
 import portfolio from './api/tinkoff/portfolio.js';
-import getTmdb from './api/tmdb/get.js';
 import convert from './utils/array/convert.js';
 import countArray from './utils/array/count.js';
 import insert from './utils/array/insert.js';
@@ -58,7 +57,6 @@ export const myshows = {auth: authMyshows, get, watch};
 export const pinger = {check, notify: notifyPinger};
 export const telegram = {sendMessage};
 export const tinkoff = {portfolio, notify: notifyTinkoff};
-export const tmdb = {get: getTmdb};
 
 /**
  * UTILS

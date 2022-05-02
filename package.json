@@ -25,7 +25,6 @@
     "nano-time": "1.0.0",
     "p-queue": "7.2.0",
     "pretty-bytes": "6.0.0",
-    "qs": "6.10.3",
     "shrink-string": "3.0.9",
     "tcp-ping-port": "1.0.1",
     "xml-js": "1.6.11"
