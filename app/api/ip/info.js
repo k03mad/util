@@ -9,6 +9,7 @@ const {ipinfo} = env;
  */
 export default async ip => {
     const url = `https://ipinfo.io/${ip}`;
+
     const tokenParams = {searchParams: {token: ipinfo.token}};
     const cacheParams = {expire: '30d'};
 
@@ -18,7 +19,7 @@ export default async ip => {
         ({body} = await gotCache(url, tokenParams, cacheParams));
     } catch (err) {
         try {
-            ({body} = await gotCache(url, cacheParams));
+            ({body} = await gotCache(url, null, cacheParams));
         } catch {
             throw err;
         }
