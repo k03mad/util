@@ -9,8 +9,6 @@ import post from './api/mikrotik/post.js';
 import check from './api/pinger/check.js';
 import notifyPinger from './api/pinger/notify.js';
 import sendMessage from './api/telegram/sendMessage.js';
-import notifyTinkoff from './api/tinkoff/notify.js';
-import portfolio from './api/tinkoff/portfolio.js';
 import convert from './utils/array/convert.js';
 import countArray from './utils/array/count.js';
 import insert from './utils/array/insert.js';
@@ -50,7 +48,6 @@ export const ip = {info, lookup};
 export const mikrotik = {post};
 export const pinger = {check, notify: notifyPinger};
 export const telegram = {sendMessage};
-export const tinkoff = {portfolio, notify: notifyTinkoff};
 
 /**
  * UTILS

@@ -19,10 +19,6 @@ export default {
         user: process.env.MIKROTIK_USER,
         password: process.env.MIKROTIK_PASSWORD,
     },
-    tinkoff: {
-        token: process.env.TOAT,
-        tg: process.env.TELEGRAM_TINKOFF_BOT,
-    },
     pinger: {
         tg: process.env.TELEGRAM_PINGER_BOT,
     },
