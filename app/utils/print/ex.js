@@ -87,6 +87,7 @@ export default (err, {
         }
     }
 
+    // eslint-disable-next-line no-console
     console.error(msg.join('\n'));
 
     if (exit) {

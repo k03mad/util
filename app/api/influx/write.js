@@ -40,6 +40,7 @@ export default async data => {
                         if (cloud.is) {
                             await got(path, {method: 'POST', searchParams: {db}, body});
                         } else {
+                            // eslint-disable-next-line no-console
                             console.log(util.formatWithOptions({colors: true}, `${magenta(meas)}\n%O\n`, values));
                         }
 

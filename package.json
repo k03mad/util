@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "chalk": "5.0.1",
-    "cli-progress": "3.10.0",
+    "cli-progress": "3.11.0",
     "debug": "4.3.4",
     "filenamify": "5.1.1",
     "got": "12.0.4",
@@ -30,7 +30,7 @@
     "xml-js": "1.6.11"
   },
   "devDependencies": {
-    "@k03mad/eslint-config": "11.0.3",
+    "@k03mad/eslint-config": "11.0.4",
     "eslint": "8.14.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsdoc": "39.2.9",
