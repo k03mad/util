@@ -14,19 +14,10 @@ export default {
     ipinfo: {
         token: process.env.IPINFO_TOKEN,
     },
-    lastfm: {
-        key: process.env.LASTFM_KEY,
-    },
     mikrotik: {
         host: process.env.MIKROTIK_HOST,
         user: process.env.MIKROTIK_USER,
         password: process.env.MIKROTIK_PASSWORD,
-    },
-    myshows: {
-        client: process.env.MYSHOWS_CLIENT,
-        secret: process.env.MYSHOWS_SECRET,
-        login: process.env.MYSHOWS_LOGIN,
-        password: process.env.MYSHOWS_PASSWORD,
     },
     tinkoff: {
         token: process.env.TOAT,
