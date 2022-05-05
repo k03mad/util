@@ -52,7 +52,7 @@ export default (url, {
     );
 
     if (username && password) {
-        msg.push(dim(red(`-u ${username}:${password}`)));
+        msg.push(dim(red(`-u ${username}:*****`)));
     }
 
     msg.push(blue(url));

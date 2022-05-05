@@ -50,15 +50,15 @@ export default (err, {
     let httpErr = '';
 
     if (err.response?.statusCode) {
-        httpErr += `${red(err.response.statusCode)}:`;
+        httpErr += `${red(err.response.statusCode)}: `;
     }
 
     if (err.options?.method) {
-        httpErr += ` ${green(err.options.method)}`;
+        httpErr += `${green(err.options.method)} `;
     }
 
     if (err.options?.url) {
-        httpErr += ` ${blue(err.options.url)}`;
+        httpErr += blue(err.options.url.replace(/:.+@/, ':*****@'));
     }
 
     if (err.response?.body) {
