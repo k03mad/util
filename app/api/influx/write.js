@@ -23,12 +23,15 @@ export default async data => {
 
     await Promise.all(convert(data).map(async ({url = influx.url, db = influx.db, meas, values, timestamp = now()}) => {
         try {
-            const writeData = Object.entries(values).map(elem => {
-                const [key, prop] = elem;
-                return [
-                    escape(key, ', '),
-                    typeof prop === 'string' ? `"${escape(prop, '"').trim()}"` : prop,
-                ].join('=');
+            const writeData = Object.entries(values).map(([key, prop]) => {
+                if (key === 'undefined') {
+                    throw new Error([`InfluxDB "${db}" measurement write error:`, `name = ${key}`, `value = ${prop}`].join('\n'));
+                }
+
+                const keyFormatted = escape(key, ', ');
+                const propertyFormatted = typeof prop === 'string' ? `"${escape(prop, '"').trim()}"` : prop;
+
+                return [keyFormatted, propertyFormatted].join('=');
             }).join();
 
             if (writeData) {
