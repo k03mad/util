@@ -6,41 +6,37 @@ import write from './write.js';
  * @param {object} append
  * @returns {Promise}
  */
-export default async append => {
-    const prepared = [];
+export default append => Promise.all(convert(append).map(async data => {
+    const measOriginal = data.meas;
+    const valuesOriginal = {...data.values};
 
-    for (const data of convert(append)) {
-        const measOriginal = data.meas;
-        const measAppend = `${data.meas}_append`;
-        const measMax = `${data.meas}_max`;
+    const measAppend = `${data.meas}_append`;
+    const valuesAppend = {...data.values};
 
-        const valuesMax = {};
-        const valuesAppend = {...data.values};
+    const valuesMax = {};
+    const measMax = `${data.meas}_max`;
 
-        await Promise.all(Object.entries(data.values).map(async ([key, value]) => {
-            const queries = [
-                `SELECT last("${key}") FROM "${measOriginal}"`,
-                `SELECT last("${key}") FROM "${measMax}"`,
-            ];
+    await Promise.all(Object.entries(valuesOriginal).map(async ([key, value]) => {
+        const queries = [
+            `SELECT last("${key}") FROM "${measOriginal}"`,
+            `SELECT last("${key}") FROM "${measMax}"`,
+        ];
 
-            const [original, max] = await Promise.all(queries.map(async q => {
-                const {results} = await query({...data, q});
-                return results[0].series?.[0]?.values?.[0]?.[1] || 0;
-            }));
-
-            if (value < original) {
-                valuesMax[key] = original + max;
-            }
-
-            valuesAppend[key] = value + (valuesMax[key] || max);
+        const [original, max] = await Promise.all(queries.map(async q => {
+            const {results} = await query({...data, q});
+            return results[0].series?.[0]?.values?.[0]?.[1] || 0;
         }));
 
-        prepared.push([
-            {values: data.values, meas: data.meas},
-            {values: valuesMax, meas: measMax},
-            {values: valuesAppend, meas: measAppend},
-        ].map(elem => ({...data, ...elem})));
-    }
+        if (value < original) {
+            valuesMax[key] = original + max;
+        }
 
-    await write(prepared.flat());
-};
+        valuesAppend[key] = value + (valuesMax[key] || max);
+    }));
+
+    await write([
+        {meas: measOriginal, values: valuesOriginal},
+        {meas: measAppend, values: valuesAppend},
+        {meas: measMax, values: valuesMax},
+    ].map(elem => ({...data, ...elem})));
+}));

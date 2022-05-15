@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "chalk": "5.0.1",
-    "cli-progress": "3.11.0",
     "debug": "4.3.4",
     "filenamify": "5.1.1",
     "got": "12.0.4",
@@ -26,8 +25,7 @@
     "p-queue": "7.2.0",
     "pretty-bytes": "6.0.0",
     "shrink-string": "3.0.9",
-    "tcp-ping-port": "1.0.1",
-    "xml-js": "1.6.11"
+    "tcp-ping-port": "1.0.1"
   },
   "devDependencies": {
     "@k03mad/eslint-config": "11.0.4",

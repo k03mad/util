@@ -16,7 +16,6 @@ export default async ({url = influx.url, db = influx.db, q}) => {
     try {
         const {body} = await got(path, {searchParams: {db, q}});
         return body;
-
     } catch (err) {
         throw new Error([`InfluxDB "${db}" read error:`, path, q, err].join('\n').trim());
     }

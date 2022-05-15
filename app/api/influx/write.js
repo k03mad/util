@@ -17,7 +17,7 @@ const {cloud, influx} = env;
  * @returns {Promise}
  */
 export default async data => {
-    const tries = 3;
+    const TRIES = 3;
 
     const errors = [];
 
@@ -25,20 +25,24 @@ export default async data => {
         try {
             const writeData = Object.entries(values).map(([key, prop]) => {
                 if (key === 'undefined') {
-                    throw new Error([`InfluxDB "${db}" measurement write error:`, `name = ${key}`, `value = ${prop}`].join('\n'));
+                    throw new Error([
+                        `InfluxDB "${db}" measurement write error:`,
+                        `name = ${key}`,
+                        `value = ${prop}`,
+                    ].join('\n'));
                 }
 
-                const keyFormatted = escape(key, ', ');
-                const propertyFormatted = typeof prop === 'string' ? `"${escape(prop, '"').trim()}"` : prop;
-
-                return [keyFormatted, propertyFormatted].join('=');
+                return [
+                    escape(key, ', '),
+                    typeof prop === 'string' ? `"${escape(prop, '"').trim()}"` : prop,
+                ].join('=');
             }).join();
 
             if (writeData) {
                 const path = `${url}/write`;
                 const body = `${meas} ${writeData} ${timestamp}`;
 
-                for (let i = 1; i <= tries; i++) {
+                for (let i = 1; i <= TRIES; i++) {
                     try {
                         if (cloud.is) {
                             await got(path, {method: 'POST', searchParams: {db}, body});
@@ -49,8 +53,13 @@ export default async data => {
 
                         break;
                     } catch (err) {
-                        if (i === tries) {
-                            throw new Error([`InfluxDB "${db}" write error:`, path, body, err].join('\n').trim());
+                        if (i === TRIES) {
+                            throw new Error([
+                                `InfluxDB "${db}" write error:`,
+                                path,
+                                body,
+                                err,
+                            ].join('\n').trim());
                         } else {
                             await delay(_.random(5000, 10_000));
                         }
@@ -63,6 +72,6 @@ export default async data => {
     }));
 
     if (errors.length > 0) {
-        throw errors.join('\n\n');
+        throw new Error(errors.join('\n\n'));
     }
 };

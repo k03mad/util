@@ -29,14 +29,12 @@ const request = async (path, json, gotOpts) => {
  * @returns {Promise<object>}
  */
 export default async (path, json, gotOpts) => {
-    const args = [path, json, gotOpts];
-
     try {
-        return await request(...args);
+        return await request(path, json, gotOpts);
     } catch (err) {
         if (err.response?.statusCode === 200) {
             await delay(_.random(1000, 5000));
-            return request(...args);
+            return request(path, json, gotOpts);
         }
 
         throw err;

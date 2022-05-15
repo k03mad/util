@@ -1,12 +1,13 @@
 import debug from 'debug';
 import got from 'got';
 
-import ua from '../../const/ua.js';
 import curl from './curl.js';
 import getQueue from './queue.js';
 import save from './save.js';
 
 const log = debug('util:request:got');
+
+const UA = 'curl/7.77.0';
 
 /**
  * @param {string} url
@@ -21,9 +22,9 @@ const request = async (url, opts) => {
     }
 
     if (!opts.headers) {
-        opts.headers = {'user-agent': ua.tools.curl};
+        opts.headers = {'user-agent': UA};
     } else if (!opts.headers['user-agent']) {
-        opts.headers['user-agent'] = ua.tools.curl;
+        opts.headers['user-agent'] = UA;
     }
 
     try {
