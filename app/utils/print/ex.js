@@ -57,7 +57,7 @@ export default (err, {
         httpErr += `${green(err.options.method)} `;
     }
 
-    if (err.options?.url) {
+    if (typeof err.options?.url === 'string') {
         httpErr += blue(err.options.url.replace(/:.+@/, ':*****@'));
     }
 
