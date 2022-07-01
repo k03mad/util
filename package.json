@@ -24,18 +24,18 @@
     "nano-time": "1.0.0",
     "p-queue": "7.2.0",
     "pretty-bytes": "6.0.0",
-    "shrink-string": "3.0.9",
+    "shrink-string": "3.0.11",
     "tcp-ping-port": "1.0.1"
   },
   "devDependencies": {
     "@k03mad/eslint-config": "11.0.5",
-    "eslint": "8.16.0",
+    "eslint": "8.18.0",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jsdoc": "39.3.2",
+    "eslint-plugin-jsdoc": "39.3.3",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "eslint-plugin-sort-destructure-keys": "1.4.0",
-    "eslint-plugin-unicorn": "42.0.0",
+    "eslint-plugin-unicorn": "43.0.0",
     "husky": "8.0.1"
   },
   "scripts": {
